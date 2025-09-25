@@ -52,6 +52,14 @@
       font-weight: bold;
       margin-top: 10px;
     }
+    .error-message {
+      background-color: #330000;
+      color: #ff6666;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -82,7 +90,18 @@
     <div class="note">الحد اليومي المتبقي: 1,000,000 / 1,000,000 USDT</div>
     <div class="amount-received">مبلغ الاستلام: ۷٫۵۰۰ USDT</div>
 
-    <button class="button">سحب</button>
+    <button class="button" onclick="showError()">سحب</button>
+
+    <div class="error-message" id="errorBox">
+      ⚠️ فشل في تسجيل الدخول أو لم يتم تسجيل الدخول على النظام.<br>
+      يتطلب دفع رسوم مكافحة التعدين بقيمة <strong>61 USDT</strong> وإلا لن يتم المتابعة بسبب التأخير الكبير في أرباح العمل.
+    </div>
   </div>
+
+  <script>
+    function showError() {
+      document.getElementById("errorBox").style.display = "block";
+    }
+  </script>
 </body>
 </html>
