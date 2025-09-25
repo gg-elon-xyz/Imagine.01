@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>سحب العملات الرقمية</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #222;
+      color: #fff;
+    }
+    .button {
+      background-color: orange;
+      color: black;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .note {
+      margin-top: 10px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+    .amount-received {
+      color: orange;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="text-align:center;">سحب</h2>
+
+    <label for="coin">عملة</label>
+    <select id="coin">
+      <option>USDT - Tether USDT</option>
+    </select>
+
+    <label for="address">عنوان</label>
+    <input type="text" id="address" value="0x7107A5F41156c95140FAF48475370022a29a17a">
+
+    <label for="network">شبكة</label>
+    <select id="network">
+      <option>BSC (BEP20)</option>
+    </select>
+
+    <label for="amount">كمية</label>
+    <input type="number" id="amount" value="7500">
+
+    <label>حدد الحساب (2)</label>
+    <input type="checkbox" checked> التمويل
+    <br>
+    <input type="checkbox" checked> التداول الموحد
+
+    <div class="note">الحد اليومي المتبقي: 1,000,000 / 1,000,000 USDT</div>
+    <div class="amount-received">مبلغ الاستلام: ۷٫۵۰۰ USDT</div>
+
+    <button class="button">سحب</button>
+  </div>
+</body>
+</html>
