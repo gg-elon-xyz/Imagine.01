@@ -2,87 +2,103 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>سحب العملات الرقمية</title>
+  <title>واجهة سحب العملات الرقمية</title>
   <style>
     body {
-      background-color: #000;
+      background-color: #0f0f0f;
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
+      margin: 0;
+      padding: 40px;
     }
     .container {
-      max-width: 400px;
+      max-width: 600px;
       margin: auto;
-      background-color: #111;
-      padding: 20px;
-      border-radius: 10px;
+      background-color: #1c1c1c;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffa500;
     }
     label {
       display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
+      margin-top: 20px;
+      margin-bottom: 8px;
       color: #ccc;
+      font-weight: bold;
     }
     input, select {
       width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background-color: #222;
-      color: #fff;
-    }
-    .button {
-      background-color: orange;
-      color: black;
       padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background-color: #2a2a2a;
+      color: #fff;
+      font-size: 16px;
+    }
+    .button, .save-button {
+      background-color: #ffa500;
+      color: #000;
+      padding: 14px;
       margin-top: 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       width: 100%;
+      font-size: 18px;
       font-weight: bold;
       cursor: pointer;
     }
-    .note {
-      margin-top: 10px;
+    .note, .amount-received {
+      margin-top: 15px;
+      font-size: 15px;
       color: #aaa;
-      font-size: 0.9em;
     }
     .amount-received {
-      color: orange;
+      color: #ffa500;
       font-weight: bold;
-      margin-top: 10px;
     }
-    .error-message {
+    .error-message, .save-message {
       background-color: #330000;
       color: #ff6666;
-      padding: 10px;
-      margin-top: 15px;
-      border-radius: 5px;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 6px;
       display: none;
+      font-size: 15px;
+    }
+    .save-message {
+      background-color: #003300;
+      color: #66ff66;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2 style="text-align:center;">سحب</h2>
+    <h2>سحب USDT</h2>
 
-    <label for="coin">عملة</label>
+    <label for="coin">العملة</label>
     <select id="coin">
-      <option>USDT - Tether USDT</option>
+      <option>USDT - Tether</option>
     </select>
 
-    <label for="address">عنوان</label>
-    <input type="text" id="address" value="0x7107A5F41156c95140FAF48475370022a29a17a">
+    <label for="address">عنوان المحفظة</label>
+    <input type="text" id="address" value="TTR1u6MyRHiMydUAv2UH9HrGvaZSTPNAfQ">
+    <button class="save-button" onclick="saveAddress()">حفظ العنوان</button>
+    <div class="save-message" id="saveBox">✅ تم حفظ العنوان بنجاح!</div>
 
-    <label for="network">شبكة</label>
+    <label for="network">الشبكة</label>
     <select id="network">
-      <option>BSC (BEP20)</option>
+      <option>TRC20</option>
     </select>
 
-    <label for="amount">كمية</label>
+    <label for="amount">المبلغ</label>
     <input type="number" id="amount" value="7500">
 
-    <label>حدد الحساب (2)</label>
+    <label>حدد الحساب</label>
     <input type="checkbox" checked> التمويل
     <br>
     <input type="checkbox" checked> التداول الموحد
@@ -94,13 +110,23 @@
 
     <div class="error-message" id="errorBox">
       ⚠️ فشل في تسجيل الدخول أو لم يتم تسجيل الدخول على النظام.<br>
-      يتطلب دفع رسوم مكافحة التعدين بقيمة <strong>61 USDT</strong> وإلا لن يتم المتابعة بسبب التأخير الكبير في أرباح العمل.
+      يتطلب دفع رسوم مكافحة التعدين بقيمة <strong>45 USDT</strong> وإلا لن يتم المتابعة بسبب التأخير الكبير في أرباح العمل.
     </div>
   </div>
 
   <script>
     function showError() {
       document.getElementById("errorBox").style.display = "block";
+    }
+
+    function saveAddress() {
+      const address = document.getElementById("address").value;
+      if (address.trim() !== "") {
+        document.getElementById("saveBox").style.display = "block";
+        setTimeout(() => {
+          document.getElementById("saveBox").style.display = "none";
+        }, 3000);
+      }
     }
   </script>
 </body>
