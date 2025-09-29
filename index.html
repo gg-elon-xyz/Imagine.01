@@ -2,132 +2,107 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>واجهة سحب العملات الرقمية</title>
+  <title>معاملة كازاواليت</title>
   <style>
     body {
-      background-color: #0f0f0f;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #008000;
+      color: #ffffff;
+      direction: rtl;
     }
     .container {
+      padding: 40px;
       max-width: 600px;
       margin: auto;
-      background-color: #1c1c1c;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
     }
-    h2 {
-      text-align: center;
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
       margin-bottom: 30px;
+    }
+    .status {
+      text-align: center;
+    }
+    .status-icon {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .status.completed .status-icon {
+      color: #00ff00;
+    }
+    .status.processing .status-icon {
       color: #ffa500;
     }
-    label {
-      display: block;
-      margin-top: 20px;
-      margin-bottom: 8px;
-      color: #ccc;
+    .card {
+      background-color: #ffffff;
+      color: #000000;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .row {
+      margin-bottom: 15px;
+    }
+    .label {
       font-weight: bold;
     }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      background-color: #2a2a2a;
-      color: #fff;
-      font-size: 16px;
-    }
-    .button, .save-button {
-      background-color: #ffa500;
-      color: #000;
-      padding: 14px;
-      margin-top: 20px;
-      border: none;
-      border-radius: 6px;
-      width: 100%;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .note, .amount-received {
-      margin-top: 15px;
-      font-size: 15px;
-      color: #aaa;
-    }
-    .amount-received {
-      color: #ffa500;
-      font-weight: bold;
-    }
-    .error-message, .save-message {
-      background-color: #330000;
-      color: #ff6666;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 6px;
-      display: none;
-      font-size: 15px;
-    }
-    .save-message {
-      background-color: #003300;
-      color: #66ff66;
+    .value {
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>سحب USDT</h2>
+    <div class="status-bar">
+      <div class="status completed">
+        <div class="status-icon">✔️</div>
+        <div>التحقق</div>
+        <div>مكتمل</div>
+      </div>
+      <div class="status processing">
+        <div class="status-icon">⏳</div>
+        <div>الدفع</div>
+        <div>قيد المعالجة</div>
+      </div>
+      <div class="status completed">
+        <div class="status-icon">✔️</div>
+        <div>الهوية</div>
+        <div>مكتمل</div>
+      </div>
+      <div class="status processing">
+        <div class="status-icon">⏳</div>
+        <div>التنفيذ</div>
+        <div>قيد الانتظار</div>
+      </div>
+    </div>
 
-    <label for="coin">العملة</label>
-    <select id="coin">
-      <option>USDT - Tether</option>
-    </select>
-
-    <label for="address">عنوان المحفظة</label>
-    <input type="text" id="address" value="TTR1u6MyRHiMydUAv2UH9HrGvaZSTPNAfQ">
-    <button class="save-button" onclick="saveAddress()">حفظ العنوان</button>
-    <div class="save-message" id="saveBox">✅ تم حفظ العنوان بنجاح!</div>
-
-    <label for="network">الشبكة</label>
-    <select id="network">
-      <option>TRC20</option>
-    </select>
-
-    <label for="amount">المبلغ</label>
-    <input type="number" id="amount" value="7500">
-
-    <label>حدد الحساب</label>
-    <input type="checkbox" checked> التمويل
-    <br>
-    <input type="checkbox" checked> التداول الموحد
-
-    <div class="note">الحد اليومي المتبقي: 1,000,000 / 1,000,000 USDT</div>
-    <div class="amount-received">مبلغ الاستلام: ۷٫۵۰۰ USDT</div>
-
-    <button class="button" onclick="showError()">سحب</button>
-
-    <div class="error-message" id="errorBox">
-      ❌ فشل السحب بسبب عدم كفاية الشحنة الكهربائية لتغطية رسوم السحب.<br>
-      يتطلب دفع رسوم بقيمة <strong>31 USDT</strong> لمتابعة العملية.
+    <div class="card">
+      <h2>رقم الطلب #18222173</h2>
+      <div class="row">
+        <div class="label">قيمة الدفع</div>
+        <div class="value">$7500</div>
+      </div>
+      <div class="row">
+        <div class="label">المبلغ المستلم</div>
+        <div class="value">شبكة بيتكوين</div>
+      </div>
+      <div class="row">
+        <div class="label">عنوان المحفظة</div>
+        <div class="value">0x7107A5F411586c95140FAF48475370022a29a17a</div>
+      </div>
+      <div class="row">
+        <div class="label">البلوكتشين المختار</div>
+        <div class="value">USDTBEP</div>
+      </div>
+      <div class="row">
+        <div class="label">رسوم الشبكة</div>
+        <div class="value">$15</div>
+      </div>
     </div>
   </div>
-
-  <script>
-    function showError() {
-      document.getElementById("errorBox").style.display = "block";
-    }
-
-    function saveAddress() {
-      const address = document.getElementById("address").value;
-      if (address.trim() !== "") {
-        document.getElementById("saveBox").style.display = "block";
-        setTimeout(() => {
-          document.getElementById("saveBox").style.display = "none";
-        }, 3000);
-      }
-    }
-  </script>
 </body>
 </html>
